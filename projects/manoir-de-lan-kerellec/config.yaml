@@ -1,0 +1,47 @@
+# Gabarit de configuration projet — un fichier par hôtel.
+# Copié automatiquement par scripts/new_project.py dans projects/<slug>/config.yaml
+
+hotel:
+  nom: "Manoir de Lan Kerellec"
+  slug: "manoir-de-lan-kerellec"          # utilisé pour le dossier et les noms de fichiers
+  categorie: "4 étoiles"          # "4 étoiles" | "5 étoiles"
+  localisation: "Trégastel, Côte de Granit Rose, Bretagne"  # déduit des photos (rochers de granit rose) — à confirmer
+  site_web: ""
+  logo_fichier: ""                 # chemin vers le fichier logo si fourni
+
+positionnement:
+  ambiance: "chillout haut de gamme"   # ex: "épuré minéral", "chaleureux boisé"
+  mots_cles: ["gastronomie fine", "granit rose", "vue mer", "maquette de voilier"]
+  reference_visuelle: "Photothèque Instagram gastronomie-forward (nombreux plats et chefs), intérieurs chinés/anciens, vue mer depuis quasi tous les angles"
+
+photos:
+  instagram_url: "https://www.instagram.com/manoirdelankerellec/"  # déduit du nom du dossier Drive — à confirmer
+  dossier_brut: ""                     # dossier LOCAL du scrape, si applicable
+  # Dossier Drive alimenté par le scénario Make "Apify → photos → Google Drive",
+  # toujours créé À L'INTÉRIEUR du dossier parent partagé du studio
+  # "Videos_immersives" (id 1kDhEW9gV4UbEUG18eX8WVYeH7pJdtDqm,
+  # https://drive.google.com/drive/folders/1kDhEW9gV4UbEUG18eX8WVYeH7pJdtDqm)
+  # — jamais à la racine du Drive.
+  google_drive_folder: "manoirdelankerellec - Photos Instagram - 120j"  # id: 1ifV7pGafsp1t22aL76uADqy5x0tDqxMK
+  make_scenario_id: "9741550"          # scénario Make partagé, réutilisé en éditant URL/nom de dossier par run
+  # projects/<slug>/photos-source/ est rempli automatiquement par le skill
+  # selection-photos à partir de dossier_brut ou google_drive_folder —
+  # ne pas éditer à la main.
+
+contact_commercial:
+  nom: ""
+  role: ""                              # Directeur Général / Marketing / Communication
+  email: ""
+  premier_contact_le: ""
+  statut: "a_contacter"                 # a_contacter | contacte | relance | rdv_obtenu | signe | perdu
+
+production:
+  nb_plans_prevus: 5
+  duree_par_plan_sec: "4-5"
+  duree_musique_sec: 24
+  outil_video: "Runway Gen-3"           # ou "Kling"
+  outil_montage: "CapCut"
+
+livraison:
+  format_hebergement: "page Notion privée"   # ou "lien vidéo non répertorié, téléchargement désactivé"
+  filigrane: false
