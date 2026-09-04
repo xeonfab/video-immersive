@@ -22,10 +22,23 @@ fonctionner normalement.
 
 ## Sons & musique (ElevenLabs)
 
-Pas encore lancés — ce premier run de test portait uniquement sur la vidéo
-du plan 01.
+| # | Couche | Modèle | Durée générée | Coût réel | flow_id / session_id | Chemin local | Statut |
+|---|---|---|---|---|---|---|---|
+| 01 | Ambiance | eleven_text_to_sound_v2 | 2s | ~16,7 crédits | `E8umXzSjy3Y0e92ZE3WZ` / `mhpzJVtSZ8aJJJUy5UD2` | `audio/01-ambiance.mp3` | ✅ Généré et téléchargé |
+| 01 | Foley (versement) | eleven_text_to_sound_v2 | 14s | ~16,7 crédits | `zslGZi79ns9CqmgNz1RJ` / `2C3YtewYN0UqsSfafBj8` | `audio/01-foley.mp3` | ✅ Généré et téléchargé — à couper sur le geste au montage (généré plus long que les 4-5s du plan, pas de réglage de durée exposé sur ce modèle) |
+
+Contrairement à Artlist, les domaines de stockage ElevenLabs
+(`storage.googleapis.com`) passent le proxy réseau de cette session — le
+téléchargement a fonctionné directement, sans la limitation notée ci-dessus
+pour les rushes vidéo.
+
+Le coût réel (~16,7 crédits/génération) est très inférieur au devis initial
+(55 crédits) — `estimate_only` semble majorer par prudence, pas un problème,
+juste une note pour ne pas se fier au devis à la décimale près.
+
+Musique d'ambiance générale : pas encore lancée.
 
 ## Total dépensé
 
 - Artlist : 500 crédits (solde restant : 2 770 / 3 270)
-- ElevenLabs : 0
+- ElevenLabs : ~33,3 crédits (ambiance + foley du plan 01)

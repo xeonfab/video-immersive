@@ -28,3 +28,12 @@ secondes.
   texture."
 - **Foley** : "Thin stream of sauce being poured from a small ceramic jug
   onto a plate, light continuous trickle, close mic, no reverb."
+
+## Générés (voir exports/generation-log.md pour le détail)
+
+- Rush vidéo : lien signé Artlist dans `exports/generation-log.md` (non
+  téléchargeable dans cette session, à récupérer manuellement ou sur machine
+  locale)
+- `audio/01-ambiance.mp3`
+- `audio/01-foley.mp3` (14s générées, à couper sur le geste de versement au
+  montage)
