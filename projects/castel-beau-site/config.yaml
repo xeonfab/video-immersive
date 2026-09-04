@@ -1,0 +1,33 @@
+# Gabarit de configuration projet — un fichier par hôtel.
+# Copié automatiquement par scripts/new_project.py dans projects/<slug>/config.yaml
+
+hotel:
+  nom: "Castel Beau Site"
+  slug: "castel-beau-site"          # utilisé pour le dossier et les noms de fichiers
+  categorie: "4 étoiles"          # "4 étoiles" | "5 étoiles"
+  localisation: "Perros-Guirec, Côte de Granit Rose, Bretagne"
+  site_web: ""
+  logo_fichier: ""                 # chemin vers le fichier logo si fourni
+
+positionnement:
+  ambiance: "chillout haut de gamme"   # ex: "épuré minéral", "chaleureux boisé"
+  mots_cles: ["gastronomie", "granit rose", "panorama côtier", "4 étoiles"]
+  reference_visuelle: "Photothèque existante haut de gamme, lumière naturelle, matières nobles (bois, granit)"
+
+contact_commercial:
+  nom: ""
+  role: ""                              # Directeur Général / Marketing / Communication
+  email: ""
+  premier_contact_le: ""
+  statut: "a_contacter"                 # a_contacter | contacte | relance | rdv_obtenu | signe | perdu
+
+production:
+  nb_plans_prevus: 5
+  duree_par_plan_sec: "4-5"
+  duree_musique_sec: 24
+  outil_video: "Runway Gen-3"           # ou "Kling"
+  outil_montage: "CapCut"
+
+livraison:
+  format_hebergement: "page Notion privée"   # ou "lien vidéo non répertorié, téléchargement désactivé"
+  filigrane: false
