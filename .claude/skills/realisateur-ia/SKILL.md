@@ -40,6 +40,40 @@ plutôt que d'improviser un prompt sur place — un prompt de génération vidé
 inventé au dernier moment perd le travail de structuration narrative déjà
 fait.
 
+### Destination des fichiers générés
+
+Les rushes vidéo pèsent plusieurs Mo chacun — bien trop pour repasser par un
+appel d'outil MCP (upload Drive en base64 dans l'appel), contrairement aux
+photos qui se copiaient directement de Drive à Drive sans passer par toi. La
+destination retenue pour ce studio est donc **Google Drive pour ordinateur** :
+écrire directement dans le dossier Drive de l'hôtel tel que synchronisé sur la
+machine, pour que les fichiers apparaissent sur Drive sans étape d'upload
+explicite.
+
+Vérifie `config.yaml` → `production.drive_local_sync_path` :
+
+- **Si renseigné** : c'est le chemin local (propre à la machine) du dossier
+  Drive de l'hôtel. Crée-y un sous-dossier `Rushes & Sons IA` (`mkdir -p`,
+  Bash) — c'est la destination finale des rushes et de l'audio, à la racine
+  du dossier de l'établissement, au même niveau que `Sélection vidéo - 8
+  photos` créé par `selection-photos`.
+- **Si absent** : demande le chemin local du dossier Drive de l'hôtel tel
+  que synchronisé sur cette machine (ex: macOS —
+  `/Users/<utilisateur>/Library/CloudStorage/GoogleDrive-<email>/My
+  Drive/Videos_immersives/<nom du dossier hôtel>` ; Windows — un chemin sous
+  `G:\Mon Drive\...` ou similaire). Enregistre-le dans
+  `production.drive_local_sync_path` une fois obtenu, pour ne pas le
+  redemander la prochaine fois. Ce chemin est propre à la machine qui
+  l'a renseigné — si une génération future échoue avec un chemin introuvable
+  (dossier synchronisé absent), redemande-le plutôt que de supposer qu'il a
+  changé d'ordinateur.
+
+Dans les deux cas, garde aussi une copie locale dans
+`projects/<slug>/rushes/` et `projects/<slug>/audio/` (déjà exclus de Git) —
+c'est ce que les autres skills du studio (`montage-capcut`,
+`critique-artistique`) lisent en interne ; le dossier Drive synchronisé est
+la copie que l'utilisateur ouvre lui-même.
+
 ## Étape 1 — Budget avant tout
 
 Avant de lancer quoi que ce soit, établis le coût total prévisible et fais-le
@@ -84,9 +118,10 @@ Pour chaque plan confirmé à l'étape 1, dans l'ordre narratif de la shot-list 
    deux appels. Pour plusieurs plans lancés d'affilée, passe leurs
    `generationId` en tableau à un seul appel de suivi plutôt que d'interroger
    un par un.
-4. Une fois terminé, télécharge le rush dans
-   `projects/<slug>/rushes/<NN>-<categorie>.mp4` (Bash `curl` sur l'URL
-   renvoyée).
+4. Une fois terminé, télécharge le rush (Bash `curl` sur l'URL renvoyée)
+   directement dans `<production.drive_local_sync_path>/Rushes & Sons
+   IA/<NN>-<categorie>.mp4`, puis copie-le (Bash `cp`, pas un deuxième
+   téléchargement) vers `projects/<slug>/rushes/<NN>-<categorie>.mp4`.
 
 ## Étape 3 — Sound design par plan (ElevenLabs)
 
@@ -99,21 +134,25 @@ design`) :
    ne force jamais un foley là où `sound-design` a explicitement noté
    "aucun").
 3. Suivi via `creative_get_flow_run_status` jusqu'à `all_completed`, puis
-   téléchargement dans `projects/<slug>/audio/<NN>-ambiance.mp3` et
-   `<NN>-foley.mp3` le cas échéant.
+   téléchargement dans `<production.drive_local_sync_path>/Rushes & Sons
+   IA/<NN>-ambiance.mp3` (et `<NN>-foley.mp3` le cas échéant), avec copie
+   vers `projects/<slug>/audio/` comme pour les rushes.
 
 ## Étape 4 — Musique d'ambiance générale (ElevenLabs, un seul appel)
 
 Un seul thème pour toute la séquence, jamais un par plan — reprends le prompt
 écrit dans `exports/sound-design.md` (24 secondes, instrumental chillout haut
 de gamme, fade-out final). `node_type: "music"`, télécharge le résultat dans
-`projects/<slug>/audio/theme-musical.mp3`.
+`<production.drive_local_sync_path>/Rushes & Sons IA/theme-musical.mp3`, avec
+copie vers `projects/<slug>/audio/theme-musical.mp3`.
 
 ## Étape 5 — Contrôle qualité avant de livrer
 
 Avant de considérer un rush "bon", regarde-le comme un réalisateur visionne
-un retour de tournage, pas comme une case à cocher : extrais 2-3 frames du
-mp4 téléchargé (`ffmpeg`, comme dans le skill `critique-artistique`) et
+un retour de tournage, pas comme une case à cocher : extrais 2-3 frames de la
+copie locale (`projects/<slug>/rushes/<NN>-*.mp4`, pas celle du dossier Drive
+synchronisé — sa réplication peut être en léger différé) avec `ffmpeg`
+(comme dans le skill `critique-artistique`) et
 vérifie l'absence de warping sur les éléments architecturaux fixes et la
 cohérence du mouvement de caméra avec le prompt demandé. Un plan qui déforme
 visiblement un mur ou une ligne de toit doit être régénéré (nouvelle tentative
@@ -130,5 +169,8 @@ dans `montage-capcut`.
 - Ajoute dans chaque fiche `shots/<NN>-*.md` le chemin vers son rush et ses
   fichiers audio, pour que `montage-capcut` les retrouve sans avoir à
   redemander où ils sont.
+- Mentionne le dossier `Rushes & Sons IA` (chemin local synchronisé) comme
+  emplacement où l'utilisateur peut ouvrir/écouter directement les fichiers
+  depuis Drive, sans passer par le dépôt.
 - Termine en indiquant que `montage-capcut` peut maintenant assembler la
   séquence, puis `critique-artistique` la valider une fois montée.

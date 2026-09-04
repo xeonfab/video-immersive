@@ -41,6 +41,7 @@ production:
   duree_musique_sec: 24
   outil_video: "Runway Gen-3"           # ou "Kling"
   outil_montage: "CapCut"
+  drive_local_sync_path: ""            # à renseigner par realisateur-ia au premier run de génération
 
 livraison:
   format_hebergement: "page Notion privée"   # ou "lien vidéo non répertorié, téléchargement désactivé"

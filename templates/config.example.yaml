@@ -39,8 +39,14 @@ production:
   nb_plans_prevus: 5
   duree_par_plan_sec: "4-5"
   duree_musique_sec: 24
-  outil_video: "Runway Gen-3"           # ou "Kling"
+  outil_video: "Runway Gen-3"           # ou "Kling" — indicatif, la génération réelle passe par Artlist (skill realisateur-ia)
   outil_montage: "CapCut"
+  # Chemin LOCAL (propre à la machine) vers le dossier Drive de cet hôtel,
+  # tel que synchronisé par Google Drive pour ordinateur. Renseigné une fois
+  # par le skill realisateur-ia, qui y dépose ensuite directement les rushes
+  # et le son générés (sous-dossier "Rushes & Sons IA") sans passer par un
+  # upload MCP — les fichiers sont trop volumineux pour ça.
+  drive_local_sync_path: ""
 
 livraison:
   format_hebergement: "page Notion privée"   # ou "lien vidéo non répertorié, téléchargement désactivé"

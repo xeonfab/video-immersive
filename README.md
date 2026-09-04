@@ -59,6 +59,19 @@ l'URL Instagram, laisse ce `folderId` tel quel.
 En parallèle, la prospection est outillée par le skill `prospection-email`, et la
 qualité du livrable final est validée par le skill `critique-artistique`.
 
+### Où atterrissent les rushes et le son générés
+
+`realisateur-ia` écrit les rushes vidéo (Artlist) et le son (ElevenLabs)
+directement dans **Google Drive pour ordinateur** — un sous-dossier
+`Rushes & Sons IA` à la racine du dossier Drive de l'hôtel (au même niveau
+que `Sélection vidéo - 8 photos`), via le chemin local synchronisé renseigné
+dans `config.yaml` (`production.drive_local_sync_path`, propre à chaque
+machine). Les fichiers sont trop volumineux pour repasser par un upload MCP
+en base64 comme pour les photos — Drive-à-Drive fonctionne pour copier un
+fichier déjà sur Drive, pas pour y déposer un fichier généré localement.
+Une copie est aussi gardée dans `projects/<slug>/rushes/` et `audio/` (exclus
+de Git) pour que les autres skills du studio les retrouvent.
+
 ## Structure du dépôt
 
 ```
