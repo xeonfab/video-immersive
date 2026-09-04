@@ -14,6 +14,12 @@ positionnement:
   mots_cles: ["sérénité", "authenticité", "vue mer"]
   reference_visuelle: ""               # une phrase décrivant le style photo existant
 
+photos:
+  instagram_url: ""                    # compte Instagram de l'hôtel
+  dossier_brut: ""                     # dossier local du scrape (ex: sortie Apify)
+  # projects/<slug>/photos-source/ est rempli automatiquement par le skill
+  # selection-photos à partir de dossier_brut — ne pas éditer à la main.
+
 contact_commercial:
   nom: ""
   role: ""                              # Directeur Général / Marketing / Communication

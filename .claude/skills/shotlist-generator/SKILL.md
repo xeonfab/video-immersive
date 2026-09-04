@@ -26,12 +26,21 @@ elles conditionnent le ton de tous les plans.
 
 ## Étape 1 — Inventorier les photos disponibles
 
-Demande la liste des photos (ou le dossier) si elle n'est pas fournie. Pour chaque
-photo utilisable, identifie sa catégorie narrative — voir `references/categories.md`
-pour la typologie complète (gastronomie, extérieur/panorama, chambre, espaces
-communs, paysage/territoire). Un projet de démonstration tient en 4-6 plans + un
-outro logo ; ne dépasse pas ce format sans que l'utilisateur le demande, la valeur
-du studio est la régularité de contenus courts, pas des films longs.
+Vérifie d'abord si `projects/<slug>/photos-source/` existe et contient des
+photos : c'est le dossier alimenté par le skill `selection-photos` (sélection
+des 8 meilleures photos depuis un scrape Instagram/Apify), déjà nommées et
+classées par catégorie dans l'ordre narratif — utilise-les directement sans
+redemander à l'utilisateur. S'il n'existe pas et que l'utilisateur dispose d'un
+dossier de photos brutes issu d'Instagram, propose d'abord de passer par
+`selection-photos` plutôt que de trier manuellement ici.
+
+Seulement si aucune des deux situations ne s'applique, demande la liste des
+photos (ou le dossier) directement. Pour chaque photo utilisable, identifie sa
+catégorie narrative — voir `references/categories.md` pour la typologie complète
+(gastronomie, extérieur/panorama, chambre, espaces communs, paysage/territoire).
+Un projet de démonstration tient en 4-6 plans + un outro logo ; ne dépasse pas ce
+format sans que l'utilisateur le demande, la valeur du studio est la régularité
+de contenus courts, pas des films longs.
 
 ## Étape 2 — Écrire chaque plan
 
