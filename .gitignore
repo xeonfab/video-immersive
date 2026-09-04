@@ -1,3 +1,9 @@
 # Dossier de passage temporaire créé par selection-photos lors d'un
 # rapatriement depuis Google Drive — jamais un livrable, jamais commité.
 projects/*/.drive-download/
+
+# Rushes vidéo et fichiers audio générés par realisateur-ia (Artlist/ElevenLabs) —
+# trop volumineux pour Git. Le livrable de référence est generation-log.md
+# (chemins + liens), pas les binaires eux-mêmes.
+projects/*/rushes/
+projects/*/audio/

@@ -20,17 +20,20 @@ sans mobiliser un vidéaste sur place.
      ↓
 [ Photo HD ]
      ↓
-1. Image-to-Video (Runway Gen-3 / Kling)      → skill: shotlist-generator
+1. Prompts caméra image-to-video               → skill: shotlist-generator
      ↓
-2. Sound Design (ElevenLabs Text-to-Sound)     → skill: sound-design
+2. Prompts sound design + thème musical         → skill: sound-design
      ↓
-3. Thème musical (24s, IA musicale)            → skill: sound-design
+3. Génération réelle vidéo (Artlist) +          → skill: realisateur-ia
+   sons/musique (ElevenLabs)
      ↓
 4. Montage, mixage, révélation logo (CapCut)   → skill: montage-capcut
 ```
 
 L'étape 0 est optionnelle : si l'utilisateur fournit déjà des photos triées, on
-passe directement à `shotlist-generator`.
+passe directement à `shotlist-generator`. Les étapes 1-2 écrivent les prompts
+(pas de coût), l'étape 3 les exécute réellement via Artlist et ElevenLabs — et
+dépense de vrais crédits, toujours avec confirmation de budget au préalable.
 
 ### Alimentation Apify/Make déjà en place
 
@@ -66,7 +69,9 @@ projects/
     config.yaml               Identité de l'hôtel, positionnement, contacts
     photos-source/            Les 8 photos retenues (rempli par selection-photos)
     shots/                    Une fiche par plan (prompt vidéo + sound design)
-    exports/                  Livrables (shotlist.md, EDL montage, emails)
+    rushes/                   Vidéos générées par realisateur-ia (Artlist)
+    audio/                    Sons + musique générés par realisateur-ia (ElevenLabs)
+    exports/                  Livrables (shotlist.md, EDL montage, emails, generation-log.md)
 templates/                  Gabarits réutilisables (email, config)
 scripts/new_project.py      Scaffold un nouveau dossier hôtel depuis _template
 ```
@@ -80,14 +85,15 @@ python3 scripts/new_project.py "Castel Beau Site"
 Crée `projects/castel-beau-site/` avec `config.yaml` à remplir et les sous-dossiers
 `shots/` et `exports/`.
 
-## Les 4 skills
+## Les 7 skills
 
 | Skill | Rôle | Invoque |
 |---|---|---|
 | `/selection-photos` | Trie un dossier de photos brutes issues d'un scrape Instagram (ex: Apify) et sélectionne les 8 meilleures (résolution, diversité des plans, attractivité, adéquation image-to-video) | En amont, si les photos ne sont pas déjà triées |
 | `/shotlist-generator` | À partir d'un brief hôtel + photos dispo (ou `photos-source/` déjà sélectionné), génère la shot-list complète (prompts caméra, durée, structure narrative façon Castel Beau Site) | En premier, une fois le projet scaffoldé |
 | `/sound-design` | Génère les prompts ElevenLabs (ambiances + foley) par plan et la structure du thème musical 24s | Après la shot-list, avant génération vidéo ou en parallèle |
-| `/montage-capcut` | Génère la feuille de montage (EDL) : ordre des plans, transitions, niveaux de mix dB, keyframes de révélation du logo | Une fois les rushes (vidéo + sons) disponibles |
+| `/realisateur-ia` | Réalisateur + directeur technique IA : exécute réellement les prompts caméra via Artlist (image-to-video) et les prompts sound design via ElevenLabs (sfx + musique), avec devis et confirmation de budget avant toute dépense | Une fois les prompts (shot-list + sound design) écrits, avant montage |
+| `/montage-capcut` | Génère la feuille de montage (EDL) : ordre des plans, transitions, niveaux de mix dB, keyframes de révélation du logo | Une fois les rushes (vidéo + sons) générés par `realisateur-ia` |
 | `/prospection-email` | Génère l'email de prospection personnalisé à partir du template validé, et tient le tracker de prospects | Indépendant, à tout moment du cycle commercial |
 | `/critique-artistique` | Directeur artistique : analyse la vidéo finale et compare son identité visuelle (palette, lumière, cadrage, rythme) à celle du compte Instagram réel de l'hôtel, donne un verdict et des recommandations | En dernier, une fois la vidéo montée, avant envoi au client |
 
