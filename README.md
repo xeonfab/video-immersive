@@ -32,6 +32,18 @@ sans mobiliser un vidéaste sur place.
 L'étape 0 est optionnelle : si l'utilisateur fournit déjà des photos triées, on
 passe directement à `shotlist-generator`.
 
+### Alimentation Apify/Make déjà en place
+
+Le scrape Instagram lui-même est géré côté Make, pas par ce dépôt : le scénario
+`Apify → 30 dernieres photos → Google Drive (<slug>)` (actor Apify Instagram
+Scraper `shu8hvrXbJbY3Eb9W`) prend l'URL du compte Instagram, récupère les 30
+derniers posts et dépose les photos dans un dossier Google Drive
+`"<slug> - Photos Instagram - 30 dernieres"`. Le skill `selection-photos` sait
+lire ce dossier Drive directement (voir sa section "Procédure spécifique —
+source Google Drive"). À dupliquer dans Make pour chaque nouvel hôtel (changer
+l'URL Instagram et le nom du dossier créé) tant que le scénario n'est pas
+généralisé avec ces valeurs en paramètres d'entrée.
+
 En parallèle, la prospection est outillée par le skill `prospection-email`, et la
 qualité du livrable final est validée par le skill `critique-artistique`.
 

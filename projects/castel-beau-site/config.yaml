@@ -14,6 +14,12 @@ positionnement:
   mots_cles: ["gastronomie", "granit rose", "panorama côtier", "4 étoiles"]
   reference_visuelle: "Photothèque existante haut de gamme, lumière naturelle, matières nobles (bois, granit)"
 
+photos:
+  instagram_url: "https://www.instagram.com/castelbeausite/"
+  dossier_brut: ""
+  google_drive_folder: "castelbeausite - Photos Instagram - 30 dernieres"
+  make_scenario_id: "9741550"          # "Apify → 30 dernieres photos → Google Drive (castelbeausite)"
+
 contact_commercial:
   nom: ""
   role: ""                              # Directeur Général / Marketing / Communication

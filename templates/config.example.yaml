@@ -16,9 +16,13 @@ positionnement:
 
 photos:
   instagram_url: ""                    # compte Instagram de l'hôtel
-  dossier_brut: ""                     # dossier local du scrape (ex: sortie Apify)
+  dossier_brut: ""                     # dossier LOCAL du scrape, si applicable
+  google_drive_folder: ""              # nom ou ID du dossier Drive, si le scénario
+                                        # Make "Apify → photos → Google Drive" est utilisé
+  make_scenario_id: ""                 # id du scénario Make correspondant (optionnel, pour référence)
   # projects/<slug>/photos-source/ est rempli automatiquement par le skill
-  # selection-photos à partir de dossier_brut — ne pas éditer à la main.
+  # selection-photos à partir de dossier_brut ou google_drive_folder —
+  # ne pas éditer à la main.
 
 contact_commercial:
   nom: ""

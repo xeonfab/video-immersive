@@ -1,13 +1,13 @@
 ---
 name: selection-photos
-description: Analyse un dossier local de photos brutes extraites du compte Instagram d'un hôtel (typiquement via un scraper Apify) et sélectionne les 8 meilleures pour la production vidéo — en évaluant format/résolution technique, diversité des plans, attractivité et adéquation à l'animation par IA (image-to-video). Utilise ce skill dès que l'utilisateur a un dossier de photos Instagram téléchargées à trier, ou demande "sélectionne les meilleures photos", "quelles photos on garde pour la vidéo", "j'ai extrait les photos via Apify", "trie ce dossier de photos". Alimente directement shotlist-generator : les 8 photos retenues sont copiées dans projects/<slug>/photos-source/ pour que ce skill les récupère automatiquement, sans que l'utilisateur ait à les lister manuellement.
+description: Analyse les photos brutes extraites du compte Instagram d'un hôtel — dossier local, OU dossier Google Drive alimenté par un scénario Make (Apify Instagram Scraper → Google Drive), typiquement "Apify → 30 dernieres photos → Google Drive" — et sélectionne les 8 meilleures pour la production vidéo : format/résolution technique, diversité des plans, attractivité, adéquation à l'animation par IA (image-to-video). Utilise ce skill dès que l'utilisateur a des photos Instagram à trier, un scénario Make/Apify qui vient de tourner, ou demande "sélectionne les meilleures photos", "quelles photos on garde pour la vidéo", "j'ai extrait les photos via Apify", "trie ce dossier de photos", "le scénario Make a tourné, trie les photos". Alimente directement shotlist-generator : les 8 photos retenues sont copiées dans projects/<slug>/photos-source/ pour que ce skill les récupère automatiquement, sans que l'utilisateur ait à les lister manuellement.
 ---
 
 # Sélection des photos source — depuis un scrape Instagram
 
 ## Objectif
 
-Un scrape Apify d'un compte Instagram ramène souvent 50 à 300 photos, de qualité
+Un scrape Apify d'un compte Instagram ramène souvent 30 à 300 photos, de qualité
 et de pertinence très inégales (stories, reposts, photos de plats en table
 d'hôtes, selfies de clients, captures d'écran). Ce skill fait le tri : il
 identifie les 8 photos qui donneront les meilleurs résultats une fois animées en
@@ -15,16 +15,59 @@ vidéo, et les prépare pour que `shotlist-generator` les récupère sans étape
 manuelle.
 
 Ce skill ne scrape pas Instagram lui-même — il part du principe que le
-téléchargement (Apify ou autre) a déjà eu lieu et que les fichiers sont dans un
-dossier local.
+téléchargement a déjà eu lieu, via l'une de ces deux sources :
 
-## Étape 0 — Localiser le dossier source et le projet
+- **Dossier local** — un dossier de photos déjà présent sur la machine.
+- **Dossier Google Drive** — le cas courant côté studio : le scénario Make
+  `Apify → 30 dernieres photos → Google Drive (<slug>)` lance l'actor Apify
+  Instagram Scraper sur l'URL du compte et dépose les photos dans un dossier
+  Drive nommé `"<slug> - Photos Instagram - 30 dernieres"`, avec des fichiers
+  `YYYY-MM-DD_<hash>.jpg`. Ce skill sait lire ce dossier directement via les
+  outils Google Drive (search_files / download_file_content) sans que
+  l'utilisateur ait à synchroniser ou télécharger quoi que ce soit à la main.
 
-Demande le chemin du dossier de photos brutes s'il n'est pas fourni. Si un
-projet `projects/<slug>/` existe pour cet hôtel, note ce chemin dans son
-`config.yaml` (section `photos.dossier_brut`) pour ne pas avoir à le redemander
-la prochaine fois. Si le projet n'existe pas encore, propose de le créer
-(`python3 scripts/new_project.py "<Nom>"`) avant de continuer.
+## Étape 0 — Localiser la source et le projet
+
+Détermine d'abord d'où viennent les photos, dans cet ordre de préférence :
+
+1. Si l'utilisateur donne un chemin de dossier local, utilise-le directement
+   (voir Étape 1).
+2. Sinon, cherche un dossier Google Drive nommé `"<slug ou nom hôtel> - Photos
+   Instagram"` (recherche partielle) via `search_files`. Si trouvé, c'est la
+   source — passe à la procédure Drive ci-dessous. C'est le cas le plus
+   fréquent une fois le scénario Make en place.
+3. Sinon, demande explicitement à l'utilisateur où se trouvent les photos —
+   ne suppose jamais un chemin.
+
+Si un projet `projects/<slug>/` existe déjà pour cet hôtel, note la source
+retenue dans son `config.yaml` (`photos.dossier_brut` pour un dossier local,
+`photos.google_drive_folder` pour le nom/ID du dossier Drive) pour ne pas avoir
+à la redemander la prochaine fois. Si le projet n'existe pas encore, propose de
+le créer (`python3 scripts/new_project.py "<Nom>"`) avant de continuer.
+
+### Procédure spécifique — source Google Drive
+
+Le pré-filtrage (Étape 1) et la revue visuelle (Étape 2) ont besoin de fichiers
+locaux — ils ne peuvent pas lire les photos directement depuis Drive. Rapatrie
+donc d'abord chaque photo dans un dossier temporaire local
+(`projects/<slug>/.drive-download/`, à ne jamais committer) :
+
+1. `search_files` avec `parentId = '<id du dossier Drive>'` pour lister tous
+   les fichiers image du dossier.
+2. Pour chaque fichier, `download_file_content` avec son `fileId` — l'outil
+   renvoie le contenu encodé en base64.
+3. Écris ce contenu base64 dans un fichier temporaire (`Write`), puis décode-le
+   en binaire avec `base64 -d fichier.b64 > projects/<slug>/.drive-download/<nom>.jpg`
+   (Bash) — c'est le point de passage obligé, il n'existe pas de moyen d'écrire
+   un fichier binaire directement depuis le contenu base64 renvoyé par l'outil.
+4. Une fois tous les fichiers rapatriés, poursuis normalement à partir de
+   l'Étape 1 en pointant le pré-filtrage sur `projects/<slug>/.drive-download/`.
+
+Sur un dossier de 30 photos (le volume typique de ce scénario Make), ça reste
+gérable en une série d'appels ; au-delà de 100-150 photos, dis-le à
+l'utilisateur avant de te lancer — le coût en appels d'outils devient
+significatif et il peut préférer réduire le `resultsLimit` côté Apify plutôt
+que de tout rapatrier.
 
 ## Étape 1 — Pré-filtrage technique automatique
 
@@ -97,3 +140,6 @@ forcer une photo hors-sujet dans cette catégorie.
 - Termine en indiquant explicitement que `shotlist-generator` peut maintenant
   être lancé directement — il lira `projects/<slug>/photos-source/` sans que
   l'utilisateur ait à relister les photos.
+- Si la source était Google Drive, supprime `projects/<slug>/.drive-download/`
+  une fois les 8 photos copiées dans `photos-source/` — c'était un dossier de
+  passage, pas un livrable, et il ne doit pas s'accumuler à chaque run.
