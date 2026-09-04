@@ -17,7 +17,7 @@ positionnement:
 photos:
   instagram_url: "https://www.instagram.com/castelbeausite/"
   dossier_brut: ""
-  google_drive_folder: "castelbeausite - Photos Instagram - 30 dernieres"
+  google_drive_folder: "castelbeausite - Photos Instagram - 30 dernieres"  # id: 19aUWDaBoYBGakXlQaUCcA0JTngKzL-I2, sous Videos_immersives
   make_scenario_id: "9741550"          # "Apify → 30 dernieres photos → Google Drive (castelbeausite)"
 
 contact_commercial:

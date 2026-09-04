@@ -18,12 +18,18 @@ Ce skill ne scrape pas Instagram lui-même — il part du principe que le
 téléchargement a déjà eu lieu, via l'une de ces deux sources :
 
 - **Dossier local** — un dossier de photos déjà présent sur la machine.
-- **Dossier Google Drive** — le cas courant côté studio : le scénario Make
+- **Dossier Google Drive** — le cas courant côté studio : un scénario Make
   `Apify → 30 dernieres photos → Google Drive (<slug>)` lance l'actor Apify
-  Instagram Scraper sur l'URL du compte et dépose les photos dans un dossier
+  Instagram Scraper sur l'URL du compte et dépose les photos dans un sous-dossier
   Drive nommé `"<slug> - Photos Instagram - 30 dernieres"`, avec des fichiers
-  `YYYY-MM-DD_<hash>.jpg`. Ce skill sait lire ce dossier directement via les
-  outils Google Drive (search_files / download_file_content) sans que
+  `YYYY-MM-DD_<hash>.jpg`. Depuis le 04/09/2026, tous ces sous-dossiers — un par
+  établissement — sont créés à l'intérieur du dossier parent partagé
+  **`Videos_immersives`**
+  (id `1kDhEW9gV4UbEUG18eX8WVYeH7pJdtDqm`,
+  https://drive.google.com/drive/folders/1kDhEW9gV4UbEUG18eX8WVYeH7pJdtDqm) —
+  c'est la racine standard du studio pour toute la matière Instagram brute,
+  jamais la racine du Drive. Ce skill sait lire ces dossiers directement via
+  les outils Google Drive (search_files / download_file_content) sans que
   l'utilisateur ait à synchroniser ou télécharger quoi que ce soit à la main.
 
 ## Étape 0 — Localiser la source et le projet
@@ -32,12 +38,17 @@ Détermine d'abord d'où viennent les photos, dans cet ordre de préférence :
 
 1. Si l'utilisateur donne un chemin de dossier local, utilise-le directement
    (voir Étape 1).
-2. Sinon, cherche un dossier Google Drive nommé `"<slug ou nom hôtel> - Photos
-   Instagram"` (recherche partielle) via `search_files`. Si trouvé, c'est la
-   source — passe à la procédure Drive ci-dessous. C'est le cas le plus
-   fréquent une fois le scénario Make en place.
+2. Sinon, cherche le sous-dossier de l'hôtel dans `Videos_immersives` : liste
+   les enfants de `1kDhEW9gV4UbEUG18eX8WVYeH7pJdtDqm` (`search_files` avec
+   `parentId = '1kDhEW9gV4UbEUG18eX8WVYeH7pJdtDqm'`) et repère celui dont le
+   nom contient le slug ou le nom de l'hôtel. Si trouvé, c'est la source —
+   passe à la procédure Drive ci-dessous. C'est le cas le plus fréquent une
+   fois le scénario Make en place pour cet hôtel.
 3. Sinon, demande explicitement à l'utilisateur où se trouvent les photos —
-   ne suppose jamais un chemin.
+   ne suppose jamais un chemin. S'il n'existe pas encore de scénario Make pour
+   ce nouvel hôtel, rappelle que le sous-dossier Drive doit être créé à
+   l'intérieur de `Videos_immersives`, pas à la racine, pour rester cohérent
+   avec les autres établissements.
 
 Si un projet `projects/<slug>/` existe déjà pour cet hôtel, note la source
 retenue dans son `config.yaml` (`photos.dossier_brut` pour un dossier local,

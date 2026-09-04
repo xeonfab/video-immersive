@@ -37,12 +37,21 @@ passe directement à `shotlist-generator`.
 Le scrape Instagram lui-même est géré côté Make, pas par ce dépôt : le scénario
 `Apify → 30 dernieres photos → Google Drive (<slug>)` (actor Apify Instagram
 Scraper `shu8hvrXbJbY3Eb9W`) prend l'URL du compte Instagram, récupère les 30
-derniers posts et dépose les photos dans un dossier Google Drive
+derniers posts et dépose les photos dans un sous-dossier Google Drive
 `"<slug> - Photos Instagram - 30 dernieres"`. Le skill `selection-photos` sait
 lire ce dossier Drive directement (voir sa section "Procédure spécifique —
 source Google Drive"). À dupliquer dans Make pour chaque nouvel hôtel (changer
 l'URL Instagram et le nom du dossier créé) tant que le scénario n'est pas
 généralisé avec ces valeurs en paramètres d'entrée.
+
+**Dossier parent commun** — tous ces sous-dossiers, un par établissement,
+doivent être créés à l'intérieur du dossier Drive partagé du studio
+**`Videos_immersives`**
+(https://drive.google.com/drive/folders/1kDhEW9gV4UbEUG18eX8WVYeH7pJdtDqm),
+jamais à la racine du Drive. Le module `google-drive:createAFolder` du
+scénario Make cible déjà ce dossier comme `folderId` — en dupliquant le
+scénario pour un nouvel hôtel, ne change que le nom du sous-dossier créé et
+l'URL Instagram, laisse ce `folderId` tel quel.
 
 En parallèle, la prospection est outillée par le skill `prospection-email`, et la
 qualité du livrable final est validée par le skill `critique-artistique`.
