@@ -71,15 +71,44 @@ les deux passent par `creative_generate_in_flow`, avec `node_type` différent :
   syntaxe de prompt musical diffère parfois d'une version à l'autre).
 
 Toujours passer `context` (pourquoi cette génération — une phrase suffit,
-c'est un paramètre requis par l'outil) et `prompt` (le texte déjà écrit par
-`sound-design`, repris tel quel).
+c'est un paramètre requis par l'outil) et `prompt`. Pour l'ambiance et la
+musique, c'est le texte déjà écrit par `sound-design`, repris tel quel. Pour
+le foley, c'est le prompt que tu viens d'écrire toi-même en observant le rush
+(SKILL.md Étape 3) — jamais un prompt anticipé depuis la photo.
+
+Toujours passer aussi `generations_count: 1` explicitement. Le défaut de
+l'outil est 4 (pour laisser choisir parmi plusieurs variations), ce qui
+quadruple le coût sans qu'on en ait besoin ici — une seule variation par
+plan suffit pour ce studio.
 
 ### Devis avant génération
 
 Appeler une première fois avec `estimate_only: true` — l'outil renvoie le
 coût en crédits sans rien générer. C'est ce résultat qui sert à construire le
 total présenté à l'utilisateur avant de lancer quoi que ce soit (SKILL.md
-Étape 1).
+Étape 1). Le coût réel facturé après génération est souvent nettement
+inférieur au devis (observé : devis 55 crédits, coût réel ~16,7) — le devis
+majore par prudence, ce n'est pas une erreur, juste ne pas s'y fier à la
+décimale près pour le budget final.
+
+### Exemples de prompts foley (écrits depuis un rush observé, pas une photo)
+
+Le point commun de ces exemples : ils décrivent un geste vu dans les frames
+extraites, pas un geste supposé. Même structure que les ambiances — matière →
+action → distance au micro — mais un seul événement net, jamais deux cumulés :
+
+- Liquide versé (frames montrant un filet continu) : *"Thin stream of sauce
+  being poured from a small ceramic jug onto a plate, light continuous
+  trickle, close mic, no reverb."*
+- Lame qui tranche (frames montrant une coupe progressive) : *"Single knife
+  slicing through a firm aged cheese wheel, clean crisp cut, subtle
+  blade-on-wood contact at the end, close mic, no reverb."*
+- Tissu qui bouge (frames montrant un rideau/nappe qui ondule) : *"Light
+  fabric rustle, soft continuous movement, close and dry, no wind."*
+
+Si les frames ne montrent aucun de ces cas — juste un push-in de caméra sur
+une scène par ailleurs immobile — c'est le signal qu'aucun foley n'est
+justifié, pas qu'il faut en inventer un pour ne pas repartir bredouille.
 
 ### Suivi et récupération
 
