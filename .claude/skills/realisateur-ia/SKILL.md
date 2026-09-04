@@ -122,6 +122,15 @@ Pour chaque plan confirmé à l'étape 1, dans l'ordre narratif de la shot-list 
    directement dans `<production.drive_local_sync_path>/Rushes & Sons
    IA/<NN>-<categorie>.mp4`, puis copie-le (Bash `cp`, pas un deuxième
    téléchargement) vers `projects/<slug>/rushes/<NN>-<categorie>.mp4`.
+   Dans un environnement cloud avec une politique d'egress réseau
+   restrictive (proxy d'agent, sandbox Claude Code sur le web), ce `curl`
+   peut échouer avec un 403/`connect_rejected` sur les domaines Artlist —
+   ce n'est pas une erreur à contourner (ne jamais réessayer en boucle ni
+   chercher un autre chemin réseau) : dans ce cas, donne directement à
+   l'utilisateur l'URL signée renvoyée par `get_generation_status`
+   (`assets[].assetUrl` ou `downloadUrl`, valide plusieurs années) pour
+   qu'il la télécharge lui-même. Sur une machine locale sans cette
+   restriction, le `curl` fonctionne normalement.
 
 ## Étape 3 — Sound design par plan (ElevenLabs)
 
