@@ -25,7 +25,8 @@ sans mobiliser un vidéaste sur place.
 4. Montage, mixage, révélation logo (CapCut)   → skill: montage-capcut
 ```
 
-En parallèle, la prospection est outillée par le skill `prospection-email`.
+En parallèle, la prospection est outillée par le skill `prospection-email`, et la
+qualité du livrable final est validée par le skill `critique-artistique`.
 
 ## Structure du dépôt
 
@@ -58,6 +59,7 @@ Crée `projects/castel-beau-site/` avec `config.yaml` à remplir et les sous-dos
 | `/sound-design` | Génère les prompts ElevenLabs (ambiances + foley) par plan et la structure du thème musical 24s | Après la shot-list, avant génération vidéo ou en parallèle |
 | `/montage-capcut` | Génère la feuille de montage (EDL) : ordre des plans, transitions, niveaux de mix dB, keyframes de révélation du logo | Une fois les rushes (vidéo + sons) disponibles |
 | `/prospection-email` | Génère l'email de prospection personnalisé à partir du template validé, et tient le tracker de prospects | Indépendant, à tout moment du cycle commercial |
+| `/critique-artistique` | Directeur artistique : analyse la vidéo finale et compare son identité visuelle (palette, lumière, cadrage, rythme) à celle du compte Instagram réel de l'hôtel, donne un verdict et des recommandations | En dernier, une fois la vidéo montée, avant envoi au client |
 
 Chaque skill lit `projects/<hotel-slug>/config.yaml` quand il existe pour se
 personnaliser automatiquement (nom de l'hôtel, étoiles, positionnement, ton).
