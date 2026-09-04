@@ -154,3 +154,31 @@ forcer une photo hors-sujet dans cette catégorie.
 - Si la source était Google Drive, supprime `projects/<slug>/.drive-download/`
   une fois les 8 photos copiées dans `photos-source/` — c'était un dossier de
   passage, pas un livrable, et il ne doit pas s'accumuler à chaque run.
+
+### Miroir Drive de la sélection (source Google Drive uniquement)
+
+Le dépôt Git n'est pas ce que l'utilisateur ouvre pour partager ou revoir les
+photos retenues — Drive l'est. Donc quand la source était un dossier Drive,
+reproduis la sélection côté Drive, pas seulement dans `photos-source/` :
+
+1. Crée un sous-dossier à l'intérieur du dossier Drive de l'hôtel (celui
+   trouvé à l'Étape 0, ex: `manoirdelankerellec - Photos Instagram - 120j`),
+   nommé `Sélection vidéo - 8 photos`, avec `create_file`
+   (`contentMimeType`/`mimeType` de dossier :
+   `application/vnd.google-apps.folder`, `parentId` = id du dossier Drive de
+   l'hôtel).
+2. Pour chacune des 8 photos retenues, retrouve le `fileId` Drive d'origine —
+   c'est celui du fichier dont le `title` correspond au nom de fichier
+   rapatrié en local à l'Étape 0 (`YYYY-MM-DD_<hash>.jpg`), visible dans le
+   résultat de `search_files` obtenu à cette étape. Copie ce fichier (jamais
+   les originaux déplacés/supprimés) avec `copy_file`, `parentId` = id du
+   nouveau sous-dossier, `title` = le même nom que celui utilisé dans
+   `photos-source/` (`01-<categorie>.jpg`, etc.) — `copy_file` duplique le
+   fichier directement dans Drive, pas besoin de retélécharger le contenu déjà
+   récupéré à l'Étape 0.
+3. Mentionne le lien du sous-dossier créé (`viewUrl` renvoyé par `create_file`)
+   dans le récapitulatif final, pour que l'utilisateur puisse l'ouvrir
+   directement sans chercher dans l'arborescence.
+
+Si la source était un dossier local (pas Drive), cette section ne s'applique
+pas — `photos-source/` dans le dépôt reste le seul livrable.

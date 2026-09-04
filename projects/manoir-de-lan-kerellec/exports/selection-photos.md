@@ -50,6 +50,12 @@ photo déjà choisie) : `05-05` et `05-27` (panorama côtier, proches de
 `paysage-rochers`), `07-24` et `06-09` (chambre, proches de
 `chambre-miroirs`).
 
+## Miroir Drive
+
+Les 8 photos retenues sont aussi copiées (fichiers Drive d'origine dupliqués,
+rien de déplacé ni supprimé) dans un sous-dossier dédié :
+https://drive.google.com/drive/folders/1u2GENoL_TZKIr71oGN6z1Nyl0-eNaq4K
+
 ## Prochaine étape
 
 `shotlist-generator` peut être lancé directement pour le Manoir de Lan
