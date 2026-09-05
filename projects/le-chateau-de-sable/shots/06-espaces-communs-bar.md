@@ -21,4 +21,9 @@ restaurant, avant l'ouverture vers l'extérieur (terrasse).
 
 ## Sound design
 
-À compléter par le skill `sound-design` — ne pas improviser ici.
+- **Ambiance** : "Warm indoor bar room tone in the evening, faint distant ice
+  clink, no voices, no music, cozy enclosed feel, near-silence with
+  texture."
+- **Foley** : décision en attente — le flatlay est statique (pas de main
+  visible), un foley n'est probablement pas pertinent, mais à confirmer si
+  l'IA anime un mouvement de liquide dans le verre.

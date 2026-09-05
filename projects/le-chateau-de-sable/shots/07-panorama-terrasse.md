@@ -21,4 +21,8 @@ séquence avant le dernier plan, le plus large (territoire).
 
 ## Sound design
 
-À compléter par le skill `sound-design` — ne pas improviser ici.
+- **Ambiance** : "Open moorland terrace ambience, steady gentle breeze across
+  grass at moderate distance, faint fabric flutter, no birds, no voices,
+  continuous loopable texture."
+- **Foley** : aucun geste net attendu (paysage, pas de sujet manipulé) —
+  l'ambiance porte tout le plan, pas de foley prévu.

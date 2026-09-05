@@ -22,4 +22,9 @@ cave/le terroir — la note minérale (granit breton) annonce le plan territoire
 
 ## Sound design
 
-À compléter par le skill `sound-design` — ne pas improviser ici.
+- **Ambiance** : "Close outdoor stone terrace room tone in soft daylight,
+  very faint distant coastal breeze, no wind gusts, no birds, quiet and
+  mineral feel, continuous loopable texture."
+- **Foley** : décision en attente — le rush est-il assez précis (verre qui
+  vibre, main qui saisit le coffret) pour justifier un bruitage ? À trancher
+  dans `realisateur-ia` sur le rush réel.

@@ -22,4 +22,7 @@ gastronomie et l'ouverture vers les espaces communs. Comble la catégorie
 
 ## Sound design
 
-À compléter par le skill `sound-design` — ne pas improviser ici.
+- **Ambiance** : "Subtle indoor room tone, very quiet, faint distant fabric
+  rustle, no HVAC hum, no footsteps, near-silence with texture."
+- **Foley** : aucun geste net attendu sur ce plan (chambre vide) — à
+  confirmer sur le rush, mais peu probable qu'un foley soit pertinent ici.

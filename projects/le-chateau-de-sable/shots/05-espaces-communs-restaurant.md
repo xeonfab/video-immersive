@@ -20,4 +20,8 @@ le spa et l'ambiance plus vivante du bar.
 
 ## Sound design
 
-À compléter par le skill `sound-design` — ne pas improviser ici.
+- **Ambiance** : "Warm indoor restaurant room tone, faint distant glass
+  clink, no voices, no music, cozy enclosed room feel, near-silence with
+  texture."
+- **Foley** : aucun geste net attendu (salle vide) — à confirmer sur le
+  rush.

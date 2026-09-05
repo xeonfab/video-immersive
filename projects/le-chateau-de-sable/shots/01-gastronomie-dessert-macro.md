@@ -24,6 +24,10 @@ l'établissement avant le plan cave/terroir qui suit.
 
 ## Sound design
 
-À compléter par le skill `sound-design` — ne pas improviser ici. Le geste de
-versement est un bon candidat naturel pour un foley liquide, mais la décision
-finale se prend sur le rush généré (skill `realisateur-ia`, étape 3).
+- **Ambiance** : "Close outdoor garden room tone in bright daylight, faint
+  distant lawn breeze, no birds, no wind gusts, quiet and intimate feel,
+  continuous loopable texture."
+- **Foley** : décision en attente — se fait sur le rush réel dans
+  `realisateur-ia` (le geste de versement visible sur la photo est un bon
+  candidat naturel, mais la décision finale dépend de ce que l'IA anime
+  réellement).

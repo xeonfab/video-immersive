@@ -28,4 +28,10 @@ alternative `2025-07-05_cc64ae76...` (moutons noirs, vue plus large, voir
 
 ## Sound design
 
-À compléter par le skill `sound-design` — ne pas improviser ici.
+- **Ambiance** : "Open countryside meadow ambience, steady light wind across
+  grass at moderate distance, faint distant sheep bleat, no traffic, no
+  voices, continuous loopable texture."
+- **Foley** : décision en attente — si l'IA anime un mouvement de tête/pas
+  net d'un mouton, un foley léger (herbe froissée, bêlement isolé) pourrait
+  être pertinent ; sinon l'ambiance seule suffit. À trancher sur le rush
+  dans `realisateur-ia`.

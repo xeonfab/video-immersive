@@ -22,4 +22,8 @@ plan chambre précédent.
 
 ## Sound design
 
-À compléter par le skill `sound-design` — ne pas improviser ici.
+- **Ambiance** : "Very quiet spa treatment room tone, faint distant water
+  trickle, no voices, no music, warm enclosed feel, near-silence with
+  texture."
+- **Foley** : aucun geste net attendu (salle vide) — à confirmer sur le
+  rush.
