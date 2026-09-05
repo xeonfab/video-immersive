@@ -7,3 +7,7 @@ projects/*/.drive-download/
 # (chemins + liens), pas les binaires eux-mêmes.
 projects/*/rushes/
 projects/*/audio/
+
+# Cache Python
+__pycache__/
+*.pyc

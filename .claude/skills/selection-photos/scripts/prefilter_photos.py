@@ -68,6 +68,13 @@ def get_image_size(path: str):
                 w = 1 + (((b1 & 0x3F) << 8) | b0)
                 h = 1 + (((b3 & 0xF) << 10) | (b2 << 2) | (b1 >> 6))
                 return w, h
+            if chunk == b"VP8X":
+                # Extended format (used when the file also carries ICC/EXIF/XMP,
+                # e.g. Instagram exports): canvas size is three 24-bit LE
+                # fields at offset 24, stored as (dimension - 1).
+                w = 1 + (head[24] | (head[25] << 8) | (head[26] << 16))
+                h = 1 + (head[27] | (head[28] << 8) | (head[29] << 16))
+                return w, h
 
     return None
 

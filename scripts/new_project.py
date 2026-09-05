@@ -7,13 +7,18 @@ Usage:
 import re
 import shutil
 import sys
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
 
 def slugify(name: str) -> str:
-    slug = name.strip().lower()
+    # Normalise les accents (é, â, ç...) en équivalents ASCII avant de
+    # filtrer, sinon "Château" perd son "â" au lieu de devenir "chateau".
+    normalized = unicodedata.normalize("NFKD", name)
+    ascii_only = normalized.encode("ascii", "ignore").decode("ascii")
+    slug = ascii_only.strip().lower()
     slug = re.sub(r"[^a-z0-9]+", "-", slug)
     return slug.strip("-")
 
