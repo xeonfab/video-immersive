@@ -22,7 +22,7 @@ photos:
   # "Videos_immersives" (id 1kDhEW9gV4UbEUG18eX8WVYeH7pJdtDqm,
   # https://drive.google.com/drive/folders/1kDhEW9gV4UbEUG18eX8WVYeH7pJdtDqm)
   # — jamais à la racine du Drive.
-  google_drive_folder: ""              # nom ou ID du sous-dossier Drive de cet hôtel
+  google_drive_folder: "lechateaudesable - Photos Instagram - 25 dernieres"  # id 1VzDDBWa770635g_d0ZusIDKiQJK54RIr
   make_scenario_id: ""                 # id du scénario Make correspondant (optionnel, pour référence)
   # projects/<slug>/photos-source/ est rempli automatiquement par le skill
   # selection-photos à partir de dossier_brut ou google_drive_folder —
