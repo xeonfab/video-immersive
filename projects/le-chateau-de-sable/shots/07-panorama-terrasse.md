@@ -19,10 +19,17 @@ grass, camera holding a slow and minimal push toward the horizon.
 Ouverture vers le grand air après une série de plans intérieurs — respire la
 séquence avant le dernier plan, le plus large (territoire).
 
+## Générés (voir exports/generation-log.md pour le détail)
+
+- Rush vidéo : lien signé Artlist dans `exports/generation-log.md` (non
+  téléchargeable dans cette session cloud, proxy réseau bloque artlist.io)
+
 ## Sound design
 
 - **Ambiance** : "Open moorland terrace ambience, steady gentle breeze across
   grass at moderate distance, faint fabric flutter, no birds, no voices,
-  continuous loopable texture."
+  continuous loopable texture." — **non générée** : décision conditionnée
+  à l'analyse des frames du rush, à faire en local.
 - **Foley** : aucun geste net attendu (paysage, pas de sujet manipulé) —
-  l'ambiance porte tout le plan, pas de foley prévu.
+  l'ambiance porte tout le plan, pas de foley prévu (à confirmer sur le
+  rush).

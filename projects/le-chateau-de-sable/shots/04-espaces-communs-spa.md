@@ -20,10 +20,16 @@ Premier plan "espaces communs" de la séquence — met en avant le
 différenciant bien-être de l'établissement, dans la continuité feutrée du
 plan chambre précédent.
 
+## Générés (voir exports/generation-log.md pour le détail)
+
+- Rush vidéo : lien signé Artlist dans `exports/generation-log.md` (non
+  téléchargeable dans cette session cloud, proxy réseau bloque artlist.io)
+
 ## Sound design
 
 - **Ambiance** : "Very quiet spa treatment room tone, faint distant water
   trickle, no voices, no music, warm enclosed feel, near-silence with
-  texture."
+  texture." — **non générée** : décision conditionnée à l'analyse des
+  frames du rush, à faire en local.
 - **Foley** : aucun geste net attendu (salle vide) — à confirmer sur le
-  rush.
+  rush une fois téléchargé localement.

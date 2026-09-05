@@ -20,9 +20,16 @@ Plan le plus calme de la séquence — respiration intime entre les deux plans
 gastronomie et l'ouverture vers les espaces communs. Comble la catégorie
 "chambre", absente du premier lot de photos sélectionné.
 
+## Générés (voir exports/generation-log.md pour le détail)
+
+- Rush vidéo : lien signé Artlist dans `exports/generation-log.md` (non
+  téléchargeable dans cette session cloud, proxy réseau bloque artlist.io)
+
 ## Sound design
 
 - **Ambiance** : "Subtle indoor room tone, very quiet, faint distant fabric
-  rustle, no HVAC hum, no footsteps, near-silence with texture."
+  rustle, no HVAC hum, no footsteps, near-silence with texture." — **non
+  générée** : décision conditionnée à l'analyse des frames du rush, à faire
+  en local.
 - **Foley** : aucun geste net attendu sur ce plan (chambre vide) — à
-  confirmer sur le rush, mais peu probable qu'un foley soit pertinent ici.
+  confirmer sur le rush une fois téléchargé localement.

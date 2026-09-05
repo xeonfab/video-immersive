@@ -20,11 +20,17 @@ Deuxième plan gastronomie, prolonge le geste de dressage du plan 01 vers la
 cave/le terroir — la note minérale (granit breton) annonce le plan territoire
 (08) en fin de séquence.
 
+## Générés (voir exports/generation-log.md pour le détail)
+
+- Rush vidéo : lien signé Artlist dans `exports/generation-log.md` (non
+  téléchargeable dans cette session cloud, proxy réseau bloque artlist.io)
+
 ## Sound design
 
 - **Ambiance** : "Close outdoor stone terrace room tone in soft daylight,
   very faint distant coastal breeze, no wind gusts, no birds, quiet and
-  mineral feel, continuous loopable texture."
+  mineral feel, continuous loopable texture." — **non générée** : décision
+  conditionnée à l'analyse des frames du rush, à faire en local.
 - **Foley** : décision en attente — le rush est-il assez précis (verre qui
   vibre, main qui saisit le coffret) pour justifier un bruitage ? À trancher
-  dans `realisateur-ia` sur le rush réel.
+  sur le rush réel une fois téléchargé localement.

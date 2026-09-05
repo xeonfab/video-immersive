@@ -19,11 +19,18 @@ depth of field, minimal and deliberate camera drift only.
 Ambiance bar/apéritif — apporte une note plus vivante et colorée après le
 restaurant, avant l'ouverture vers l'extérieur (terrasse).
 
+## Générés (voir exports/generation-log.md pour le détail)
+
+- Rush vidéo : lien signé Artlist dans `exports/generation-log.md` (non
+  téléchargeable dans cette session cloud, proxy réseau bloque artlist.io)
+
 ## Sound design
 
 - **Ambiance** : "Warm indoor bar room tone in the evening, faint distant ice
   clink, no voices, no music, cozy enclosed feel, near-silence with
-  texture."
+  texture." — **non générée** : décision conditionnée à l'analyse des
+  frames du rush, à faire en local.
 - **Foley** : décision en attente — le flatlay est statique (pas de main
   visible), un foley n'est probablement pas pertinent, mais à confirmer si
-  l'IA anime un mouvement de liquide dans le verre.
+  l'IA anime un mouvement de liquide dans le verre, sur le rush une fois
+  téléchargé localement.
