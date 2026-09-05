@@ -3,61 +3,65 @@
 **Source** : Google Drive, dossier `lechateaudesable - Photos Instagram - 25 dernieres`
 (id `1VzDDBWa770635g_d0ZusIDKiQJK54RIr`, dans `Videos_immersives`)
 
-## Bilan du tri
+> **Mise à jour** : sélection revue après une modification manuelle par
+> l'utilisateur du dossier miroir Drive "Sélection vidéo - 8 photos" — 4
+> nouvelles photos ajoutées directement, dont une vraie photo de chambre qui
+> comblait le trou signalé dans la version précédente de ce rapport. Voir
+> détail ci-dessous.
+
+## Bilan du tri (lot initial, 24 photos)
 
 - **24** photos rapatriées depuis Drive
-- **7** écartées au pré-filtrage technique (résolution insuffisante, < 1080px sur le
-  plus petit côté) :
-  - `2026-01-21_5f95cb25...` (977px)
-  - `2026-02-05_e5115cf6...` (960px)
-  - `2026-02-21_ef6f2352...` (960px)
-  - `2026-03-18_7a6e3e6f...` (721px)
-  - `2026-03-26_107c1bec...` (912px)
-  - `2026-03-26_82a94b2c...` (540px)
-  - `2026-08-15_a38f4aa4...` (1026px)
+- **7** écartées au pré-filtrage technique (résolution insuffisante, < 1080px
+  sur le plus petit côté)
 - **17** candidats techniquement valides passés en revue visuelle
-- **4** écartées en revue visuelle malgré une résolution correcte :
-  - `2025-06-29...` et `2025-12-20...` (portrait chef) et `2026-04-10...`
-    (portrait réceptionniste) — visages nets et identifiables, risque d'usage
-    commercial de l'image d'une personne sans consentement
-  - `2025-11-28...` — montage collage 4 images + texte "PORSPODER", hors
-    format pour une animation image-to-video
-  - `2025-07-19...` — festival de cerfs-volants, ciel chargé et scène trop
-    chaotique, hors-catégorie
-- **8** retenues pour la vidéo (voir tableau ci-dessous)
+- **4** écartées en revue visuelle : 2 portraits identifiables (chef,
+  réceptionniste), 1 collage multi-images, 1 scène hors-catégorie (festival
+  de cerfs-volants)
 
-## Sélection finale
+## Ajustement manuel du dossier miroir Drive
+
+L'utilisateur a directement modifié le dossier "Sélection vidéo - 8 photos" :
+retrait de 5 photos du premier passage (dessert chocolat, coffret vin,
+fauteuil cosy, spa, bar), ajout de 4 nouvelles photos hors du lot des 24
+initiales :
+
+| Fichier | Verdict | Raison |
+|---|---|---|
+| `2025-01-29_07e651aa...` | **Retenue** | Chambre lumineuse (lit king size, terrasse vitrée, bureau) — comble la catégorie "chambre", absente du premier passage |
+| `2025-02-22_917181fb...` | **Retenue** | Main versant une sauce sur un dessert (mousse, œufs de saumon), geste net et propre, aucun visage |
+| `2018-01-23_e540a19b...` | Écartée | 720×900px — bien sous le seuil technique (1080px), risque fort d'artefacts en image-to-video |
+| `2026-02-05_e5115cf6...` | Écartée | 960px — déjà écartée au pré-filtrage du lot initial pour la même raison |
+
+Les 2 photos sous le seuil de résolution ont été retirées après validation
+explicite de l'utilisateur ; la sélection a été complétée en réintégrant les
+meilleures candidates du premier passage (coffret de vin, spa, restaurant,
+bar, terrasse, moutons) pour revenir à 8 photos, désormais avec un vrai plan
+chambre.
+
+## Sélection finale (mise à jour)
 
 | # | Fichier | Catégorie | Description | Raison de sélection |
 |---|---|---|---|---|
-| 01 | `01-gastronomie-dessert-chocolat.jpg` | Gastronomie | Dessert chocolat/cerises, vue plongeante sur table bois, quenelle et coulis | Meilleur candidat gastronomie du dossier — composition épurée, forte lisibilité, sujet net et centré, idéal pour un léger zoom |
-| 02 | `02-gastronomie-coffret-vin.jpg` | Gastronomie | Coffret de vin (Brumont Montus) et verre, posé sur un rocher de granit | Complète le plan dessert par une note terroir/œnologie, ancrage minéral local |
-| 03 | `03-interieur-fauteuil-cosy.jpg` | Intérieur | Gros plan sur un fauteuil beige, bougie et guirlande lumineuse en arrière-plan | Substitut "chambre" — aucune photo de chambre n'était disponible dans ce dossier (voir note ci-dessous), cette image porte une ambiance intime et chaleureuse |
-| 04 | `04-espaces-communs-spa.jpg` | Espaces communs | Salle de soins/massage, lumière tamisée, ambiance zen | Espace bien-être, différenciant fort pour un 4 étoiles, aucun visage |
-| 05 | `05-espaces-communs-restaurant.jpg` | Espaces communs | Salle de restaurant, lumière dorée de fin de journée | Meilleure lumière naturelle de tout le dossier, sujet net, aucun visage |
-| 06 | `06-espaces-communs-bar.jpg` | Espaces communs | Flatlay bar : cocktail, menthe, tonic, limoncello | Ambiance bar/apéritif, composition graphique forte, texture et couleurs vives |
-| 07 | `07-panorama-terrasse.jpg` | Panorama/extérieur | Terrasse en hauteur, vue sur la lande et l'horizon, chapeau et magazine | Seule vue extérieure/panoramique nette du dossier, respiration après les plans intérieurs |
-| 08 | `08-paysage-territoire-moutons.jpg` | Paysage/territoire | Moutons noirs (race locale) dans un pré clos de pierre | Ancrage territoire fort et différenciant — ⚠️ à surveiller en image-to-video : sujet vivant, mouvement de tête/regard imprévisible, prévoir un prompt caméra très contraint (push-in minimal, pas d'animation sur l'animal lui-même) |
-
-### Note — catégorie "chambre" absente
-
-Aucune des 24 photos rapatriées ne montre l'intérieur d'une chambre. Le plan
-03 (fauteuil) sert de substitut le plus proche en attendant que le compte
-Instagram publie ou que l'hôtel fournisse une photo de chambre dédiée — à
-signaler à l'utilisateur avant de lancer `shotlist-generator`.
+| 01 | `01-gastronomie-dessert-macro.jpg` | Gastronomie | Main versant une sauce sombre sur un dessert (mousse, œufs de saumon/groseille), table en extérieur | Geste de dressage net, aucun visage, bon candidat pour un foley de liquide versé |
+| 02 | `02-gastronomie-coffret-vin.jpg` | Gastronomie | Coffret de vin (Brumont Montus) et verre, posé sur un rocher de granit | Ancrage terroir/minéral, complète le plan dessert |
+| 03 | `03-chambre.jpg` | Chambre | Chambre lumineuse, lit king size, terrasse vitrée en arrière-plan, bureau et TV | Plan chambre manquant dans la version précédente — ajout de l'utilisateur, très bon candidat (sujet net, aucune personne) |
+| 04 | `04-espaces-communs-spa.jpg` | Espaces communs | Salle de soins/massage, lumière tamisée | Espace bien-être différenciant, aucun visage |
+| 05 | `05-espaces-communs-restaurant.jpg` | Espaces communs | Salle de restaurant, lumière dorée de fin de journée | Meilleure lumière naturelle du dossier |
+| 06 | `06-espaces-communs-bar.jpg` | Espaces communs | Flatlay bar : cocktail, menthe, tonic, limoncello | Ambiance bar/apéritif, composition graphique forte |
+| 07 | `07-panorama-terrasse.jpg` | Panorama/extérieur | Terrasse en hauteur, vue sur la lande et l'horizon | Seule vue extérieure/panoramique nette du dossier |
+| 08 | `08-paysage-territoire-moutons.jpg` | Paysage/territoire | Moutons noirs (race locale) dans un pré clos de pierre | Ancrage territoire fort — ⚠️ sujet vivant, prévoir un prompt caméra très contraint |
 
 ## Meilleures candidates non retenues
 
-- `2026-04-03_d46292e5...` (sculpture chocolat pieuvre sur galets) — très
-  proche en composition du plan 02 (assiette/objet posé sur pierre), écartée
-  pour éviter la redondance visuelle
-- `2026-06-07_b3504d98...` (salle de restaurant, tables dressées) — bonne
-  photo mais redondante avec le plan 05, lumière moins qualitative
-- `2025-07-05_cc64ae76...` (moutons noirs, vue plus large) — alternative au
-  plan 08 si le gros plan retenu s'avère trop difficile à animer
+- `2026-04-03_d46292e5...` (sculpture chocolat pieuvre sur galets) — redondante
+  avec le plan 02
+- `2026-06-07_b3504d98...` (salle de restaurant, tables dressées) — redondante
+  avec le plan 05
+- `03-interieur-fauteuil-cosy` (ancien substitut chambre) — plus nécessaire,
+  remplacé par une vraie photo de chambre
 
 ## Prochaine étape
 
-`shotlist-generator` peut être lancé directement — il lira
-`projects/le-chateau-de-sable/photos-source/` sans qu'il soit nécessaire de
-relister les photos.
+`shotlist-generator` a été relancé sur cette nouvelle composition — les
+fiches de plan dans `shots/` reflètent cette version, pas la précédente.
