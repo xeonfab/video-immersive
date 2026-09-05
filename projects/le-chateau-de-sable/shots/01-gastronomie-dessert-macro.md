@@ -22,12 +22,20 @@ Plan d'ouverture — le geste de versement est le sujet d'attention principal,
 capte l'attention en 2 secondes et introduit le savoir-faire gastronomique de
 l'établissement avant le plan cave/terroir qui suit.
 
+## Générés (voir exports/generation-log.md pour le détail)
+
+- Rush vidéo : lien signé Artlist dans `exports/generation-log.md` (non
+  téléchargeable dans cette session cloud, proxy réseau bloque artlist.io)
+- Musique globale : `audio/theme-musical.mp3` (générée, commune à tous les
+  plans)
+
 ## Sound design
 
 - **Ambiance** : "Close outdoor garden room tone in bright daylight, faint
   distant lawn breeze, no birds, no wind gusts, quiet and intimate feel,
-  continuous loopable texture."
-- **Foley** : décision en attente — se fait sur le rush réel dans
-  `realisateur-ia` (le geste de versement visible sur la photo est un bon
-  candidat naturel, mais la décision finale dépend de ce que l'IA anime
-  réellement).
+  continuous loopable texture." — **non générée** : décision conditionnée à
+  l'analyse des 6 frames du rush (demande explicite de l'utilisateur), qui
+  nécessite le fichier vidéo local — impossible à récupérer dans cette
+  session cloud, à faire depuis la session Claude Code locale.
+- **Foley** : décision en attente — même blocage, se fait sur le rush réel
+  dans `realisateur-ia` une fois téléchargé localement.
