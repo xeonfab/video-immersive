@@ -55,13 +55,13 @@ narratif proche → loin → intime → collectif → grand angle.
 | 03 | `03-chambre-interieur.jpg` | Chambre / intérieur | 8.5/10 | Salle de bain avec baignoire îlot, rideaux amples, carrelage écailles de poisson — matière et lumière naturelle qualitative, aucun élément parasite. |
 | 04 | `04-chambre-interieur.jpg` | Chambre / intérieur | 8/10 | Tête de lit bois brut + coussin brodé (colombe), ambiance chaleureuse et épurée — bon contraste avec la salle de bain (n°03). |
 | 05 | `05-espaces-communs.jpg` | Espaces communs | 9.5/10 | Salon rond, fauteuils crème sculpturaux, moulures d'époque, vue jardin par de grandes portes-fenêtres — photo la plus qualitative du lot, plan large mais sujet net, aucune personne. |
-| 06 | `06-paysage-territoire.jpg` | Paysage / territoire | 8.5/10 | Paon perché sur une cheminée en pierre au petit matin — image distinctive et mémorable, incarne le caractère "domaine" du lieu mieux qu'un simple plan de parc. |
+| 06 | `06-piscine-detente.jpg` | Piscine / bien-être | 8/10 | Femme en peignoir lisant au bord de la piscine, cadre boisé, ambiance détente — **remplace la photo `06-paysage-territoire.jpg` (paon sur cheminée) à la demande explicite du client le 07/09/2026.** ⚠️ Personne identifiable au premier plan (visage net de profil) — cette photo avait été écartée par la sélection initiale pour ce motif (droit à l'image) ; réintégrée après confirmation explicite du client, qui assume le risque. |
 | 07 | `07-panorama-exterieur.jpg` | Panorama extérieur | 8.5/10 | Façade du château avec arcades et arbres à agrumes en pots, lumière de fin de journée — bonne transition entre intérieur et extérieur avant le plan large final. |
 | 08 | `08-panorama-exterieur.jpg` | Panorama extérieur | 9.5/10 | Plan large du château à l'heure bleue, éclairage architectural, terrasse et pelouse éclairée par des spots au sol — plan de clôture idéal, grand angle, aucune personne identifiable. |
 
 Répartition : Gastronomie macro (2) · Chambre/intérieur (2) · Espaces communs
-(1) · Paysage/territoire (1) · Panorama extérieur (2) — conforme à la cible
-1-2 par catégorie du skill, les 5 catégories sont couvertes.
+(1) · Piscine/bien-être (1) · Panorama extérieur (2) — la catégorie
+paysage/territoire n'est plus couverte suite au remplacement du 07/09/2026.
 
 ## 4. Meilleures candidates non retenues
 
