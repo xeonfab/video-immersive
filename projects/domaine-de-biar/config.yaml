@@ -5,14 +5,14 @@ hotel:
   nom: "Domaine de Biar"
   slug: "domaine-de-biar"          # utilisé pour le dossier et les noms de fichiers
   categorie: "4 étoiles"          # "4 étoiles" | "5 étoiles"
-  localisation: "Ville, Région"
+  localisation: "près de Montpellier, Occitanie"
   site_web: ""
   logo_fichier: ""                 # chemin vers le fichier logo si fourni
 
 positionnement:
-  ambiance: "chillout haut de gamme"   # ex: "épuré minéral", "chaleureux boisé"
-  mots_cles: ["sérénité", "authenticité", "vue mer"]
-  reference_visuelle: ""               # une phrase décrivant le style photo existant
+  ambiance: "château champêtre chic"   # élégance patrimoniale + nature
+  mots_cles: ["patrimoine", "sérénité", "art de vivre"]
+  reference_visuelle: "château de caractère au cœur d'un parc arboré, salons d'époque, piscine et gastronomie soignée"
 
 photos:
   instagram_url: ""                    # compte Instagram de l'hôtel
@@ -36,7 +36,7 @@ contact_commercial:
   statut: "a_contacter"                 # a_contacter | contacte | relance | rdv_obtenu | signe | perdu
 
 production:
-  nb_plans_prevus: 5
+  nb_plans_prevus: 8   # + 1 outro logo — les 8 photos curées sont toutes utilisées (écart au format standard 4-6)
   duree_par_plan_sec: "4-5"
   duree_musique_sec: 24
   outil_video: "Runway Gen-3"           # ou "Kling" — indicatif, la génération réelle passe par Artlist (skill realisateur-ia)
