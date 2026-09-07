@@ -19,6 +19,12 @@ Ouverture sensorielle : le détail culinaire capte l'attention en 2 secondes
 et pose immédiatement le niveau de gastronomie du domaine, avant d'ouvrir
 sur le reste de l'expérience.
 
+## Rush
+
+Généré (Kling v3 Pro I2V, 1080p, 5s) — generationId `01a07ca6-89b3-7305-833b-ac2c654a8a83`.
+Lien de téléchargement dans `exports/generation-log.md` (proxy réseau de la session
+bloquant le téléchargement direct — à récupérer manuellement).
+
 ## Sound design
 
 À compléter par le skill `sound-design` — ne pas improviser ici.

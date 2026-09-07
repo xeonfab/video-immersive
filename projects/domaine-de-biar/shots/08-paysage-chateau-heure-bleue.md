@@ -18,6 +18,12 @@ Plan de clôture avant la marque : grand angle qui situe le domaine dans son
 parc à l'heure bleue, l'image la plus emblématique et la plus qualitative de
 la sélection (9.5/10).
 
+## Rush
+
+Généré (Kling v3 Pro I2V, 1080p, 5s) — generationId `01a07ca6-cbd8-7247-a041-1a50aeb48f96`.
+Lien de téléchargement dans `exports/generation-log.md` (proxy réseau de la session
+bloquant le téléchargement direct — à récupérer manuellement).
+
 ## Sound design
 
 À compléter par le skill `sound-design` — ne pas improviser ici.

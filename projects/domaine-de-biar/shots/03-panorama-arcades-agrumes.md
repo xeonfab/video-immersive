@@ -18,6 +18,12 @@ Premier pas hors de la table : on ouvre sur le patrimoine architectural du
 domaine, lumière chaude de fin de journée, avant d'entrer dans l'intimité
 des chambres.
 
+## Rush
+
+Généré (Kling v3 Pro I2V, 1080p, 5s) — generationId `01a07ca6-9d8a-72ce-9f09-b873542906ba`.
+Lien de téléchargement dans `exports/generation-log.md` (proxy réseau de la session
+bloquant le téléchargement direct — à récupérer manuellement).
+
 ## Sound design
 
 À compléter par le skill `sound-design` — ne pas improviser ici.

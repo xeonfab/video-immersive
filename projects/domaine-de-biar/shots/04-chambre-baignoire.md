@@ -17,6 +17,12 @@ faint natural drift.
 Entrée dans l'intimité : plan le plus calme de la séquence, lumière douce et
 matière (tissu, faïence) au premier plan, sans aucun mouvement brusque.
 
+## Rush
+
+Généré (Kling v3 Pro I2V, 1080p, 5s) — generationId `01a07ca6-a63c-7ad4-a31c-55b187f43bd0`.
+Lien de téléchargement dans `exports/generation-log.md` (proxy réseau de la session
+bloquant le téléchargement direct — à récupérer manuellement).
+
 ## Sound design
 
 À compléter par le skill `sound-design` — ne pas improviser ici.

@@ -16,6 +16,12 @@ minimal camera drift only, extreme close focus on the pillow embroidery.
 Deuxième temps intime, plus chaleureux et texturé (bois brut, broderie) —
 prolonge le calme du plan précédent avant de rouvrir sur le collectif.
 
+## Rush
+
+Généré (Kling v3 Pro I2V, 1080p, 5s) — generationId `01a07ca6-ad64-789f-bf43-23b8d7bedf69`.
+Lien de téléchargement dans `exports/generation-log.md` (proxy réseau de la session
+bloquant le téléchargement direct — à récupérer manuellement).
+
 ## Sound design
 
 À compléter par le skill `sound-design` — ne pas improviser ici.

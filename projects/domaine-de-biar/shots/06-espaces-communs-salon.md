@@ -18,6 +18,12 @@ Bascule vers le collectif : le plan le plus qualitatif de la sélection,
 architecture d'époque et mobilier contemporain, aucune personne dans le
 cadre — l'expérience projetée plutôt que documentée.
 
+## Rush
+
+Généré (Kling v3 Pro I2V, 1080p, 5s) — generationId `01a07ca6-b807-7281-9d38-6fbbad533878`.
+Lien de téléchargement dans `exports/generation-log.md` (proxy réseau de la session
+bloquant le téléchargement direct — à récupérer manuellement).
+
 ## Sound design
 
 À compléter par le skill `sound-design` — ne pas improviser ici.

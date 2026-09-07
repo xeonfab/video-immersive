@@ -27,6 +27,14 @@ la vidéo. Le prompt ci-dessus verrouille volontairement toute animation du
 visage/de la posture pour limiter le risque de distorsion sur un sujet
 humain — mais n'élimine pas le risque juridique lié à l'identifiabilité.
 
+## Rush
+
+Généré (Kling v3 Pro I2V, 1080p, 5s) — generationId `01a07ca6-c032-78ea-bbe5-559fe53df1ac`.
+Lien de téléchargement dans `exports/generation-log.md` (proxy réseau de la session
+bloquant le téléchargement direct — à récupérer manuellement). Vérifier en priorité
+sur ce plan l'absence de dérive du visage/de la posture avant de valider le rush
+(cf. avertissement droit à l'image plus haut).
+
 ## Sound design
 
 À compléter par le skill `sound-design` — ne pas improviser ici.
