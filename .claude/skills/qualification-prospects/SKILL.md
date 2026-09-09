@@ -28,9 +28,8 @@ côté Make, sur un **Data Store** partagé.
   envoie 3 images + le résumé JSON des posts à Claude (vision), récupère
   un verdict structuré (`viable`, `score`, `raison`, `ratio_video_pct`,
   `qualite_visuelle`), et met à jour l'enregistrement.
-  - Modèle Claude : `claude-sonnet-4-20250514` (connexion Anthropic déjà
-    configurée dans ce workspace Make, réutilisée depuis le scénario
-    "Radar IA").
+  - Modèle Claude : `claude-sonnet-5` (connexion Anthropic déjà configurée
+    dans ce workspace Make, id `13999972`).
   - Coût : 1 run Apify (léger, resultsLimit 12) + 1 appel Claude vision par
     prospect. Pas de stockage Drive à cette étape — uniquement au moment du
     scraping complet, une fois le prospect validé viable.
@@ -83,25 +82,62 @@ référence est le scénario "Apify → 50 photos → Google Drive (domainedebia
 id `9766274`, à cloner/adapter avec le bon `directUrls` et `resultsLimit:
 60`), puis enchaîner sur `selection-photos`.
 
-## État connu au 2026-09-07 — à vérifier avant un premier run en masse
+## État validé au 2026-09-09 — pipeline fonctionnel de bout en bout
 
-Le scénario a été testé une fois de bout en bout sur un enregistrement réel
-(Manoir de Lan Kerellec). Un bug bloquant a été trouvé et corrigé : les
-modules `datastore:SearchRecord` et `datastore:UpdateRecord` exposent/
-attendent les champs sous une clé `data` imbriquée (`{{1.data.champ}}` en
-lecture, `data: {...}` en écriture), pas à plat — ce n'est documenté nulle
-part dans l'aide des modules, seule la RPC `iface2`/`expect` le révèle.
-Cette correction est en place dans le scénario actuel.
+Le scénario a été testé complet sur un enregistrement réel (Manoir de Lan
+Kerellec, `test-manoirdelankerellec`) : `statut` passe correctement à
+`viable`/`ecarte` avec `score`, `raison`, `ratio_video_pct` et
+`qualite_visuelle` tous remplis par le jugement Claude. Plusieurs bugs
+Make non documentés ont été trouvés et corrigés au passage :
 
-Le dernier run de test a consommé seulement 6 opérations (au lieu d'environ
-11 attendues pour un passage complet jusqu'à `UpdateRecord`) sans erreur
-reportée, et le champ `raison` n'a pas été rempli — signe que l'exécution
-s'arrête quelque part entre la récupération des posts Apify et l'appel
-Claude, sans lever d'erreur exploitable via l'API Make. **Avant de lancer un
-run sur un vrai lot de prospects, ouvrir le scénario une fois dans
-l'éditeur visuel Make (scenario 9766362) et faire un "Run once" — l'éditeur
-montre le contenu réel de chaque bundle à chaque étape, ce qui permettra de
-voir immédiatement où ça s'arrête (probablement le nombre d'items retournés
-par `fetchDatasetItems`, ou une des 3 récupérations d'image).** C'est un
-diagnostic visuel de 2 minutes, pas refaisable à l'aveugle depuis cette
-interface.
+1. **Placement du paramètre `datastore`** : doit être dans `parameters`
+   (statique), pas dans `mapper` — sinon `TypeError: Cannot read properties
+   of undefined (reading 'datastore')`.
+2. **Forme du filtre `SearchRecord`** : `filter` doit être un tableau
+   imbriqué (`[[{...}]]`, groupes OR de conditions AND), pas un tableau
+   plat.
+3. **Nesting `data`** : `datastore:SearchRecord` expose les champs sous
+   `{{N.data.champ}}` (pas `{{N.champ}}`), et `datastore:UpdateRecord`
+   attend `mapper: {key, upsert, overwriteArrays, data: {...champs}}` (pas
+   les champs à plat dans `mapper`). Non documenté dans l'aide du module —
+   seule la RPC `iface2`/`expect?action=update` le révèle.
+4. **Indexation de tableau** : `{{get(array; N).champ}}` ne chaîne pas
+   l'accesseur — il retourne tout l'objet JSON de l'item au lieu du champ.
+   Utiliser la notation crochets `{{array[N].champ}}`, qui fonctionne
+   correctement.
+5. **Types numériques** : `max_tokens` et `temperature` du module Claude
+   doivent être des nombres JSON (`700`, `0`), pas des chaînes (`"700"`,
+   `"0"`) — sinon `[400] max_tokens: Input should be a valid integer`.
+6. **Modèle Claude** : `claude-sonnet-4-20250514` n'est plus disponible sur
+   cette connexion Anthropic (404) — utiliser `claude-sonnet-5`. Vérifier
+   la liste à jour avec la RPC `listModels` si un modèle est de nouveau
+   invalide un jour.
+7. **Le plus gros piège — sortie du module `anthropic-claude:createAMessage`** :
+   il n'existe **aucun champ `textResponse`** en sortie de ce module,
+   contrairement à ce que suggère un scénario de référence ("Radar IA")
+   copié initialement. La sortie réelle est `content: [...]`, un tableau de
+   blocs (`{type, text, ...}`) — le texte de la réponse Claude est dans
+   `{{9.content[1].text}}` (premier bloc de type texte), pas
+   `{{9.textResponse}}`. Utiliser une référence inexistante ne lève pas
+   d'erreur dans Make : elle s'évalue silencieusement en chaîne vide, ce
+   qui a fait planter `json:ParseJSON` en aval (`BundleValidationError`)
+   sans qu'aucun log ne pointe vers la vraie cause. Vérifié avec
+   `mcp__Make__app-module_get` (schéma de sortie du module) — pas visible
+   dans l'éditeur visuel sans l'ouvrir soi-même.
+
+Toutes ces corrections sont en place dans le scénario actuel (id
+`9766362`). Le blueprint de référence à jour est : `SearchRecord` (data
+imbriquée) → `apify:runActorNew`/`apifyApiCall`/`fetchDatasetItems` →
+`BasicAggregator` → 3× `http:ActionGetFile` (URLs en notation crochets) →
+`anthropic-claude:createAMessage` (modèle `claude-sonnet-5`, max_tokens/
+temperature en nombres) → `json:ParseJSON` sur `{{9.content[1].text}}` →
+`datastore:UpdateRecord` (data imbriquée).
+
+Méthode de diagnostic qui a permis de trouver ces bugs (utile pour la
+prochaine fois) : bisection par troncature du blueprint (retirer les
+modules après le point suspect) + branches diagnostiques dédiées qui
+écrivent une valeur brute (ex: `{{9.content[1].text}}`, une longueur de
+tableau, un item indexé) directement dans un champ du data store via un
+`UpdateRecord` de test — `executions_get-detail` ne donne pas
+d'introspection utile par module dans cet environnement, contrairement à
+ce que sa description laisse penser.
